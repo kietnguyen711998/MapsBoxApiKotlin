@@ -71,14 +71,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListene
     }
 
     override fun onExplanationNeeded(permissionsToExplain: List<String>) {
-        Toast.makeText(this, "locatio permission granyed", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Location permission granyed", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPermissionResult(granted: Boolean) {
         if (granted) {
             mapboxMap!!.getStyle { style -> enableLocationComponent(style) }
         } else {
-            Toast.makeText(this, "location permission not granted", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Location permission not granted", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListene
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
         super.onSaveInstanceState(outState, outPersistentState)
-        mapView!!.onSaveInstanceState(outState)
+        mapView?.onSaveInstanceState(outState)
     }
 
     /**
@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListene
         val destinationPoint = Point.fromLngLat(point.longitude, point.latitude)
         val originPoint = Point.fromLngLat(locationComponent?.lastKnownLocation!!.longitude,
                 locationComponent?.lastKnownLocation!!.latitude)
-        val source = mapboxMap!!.style!!.getSourceAs<GeoJsonSource>("destination-source-id")
+        val source = mapboxMap?.style?.getSourceAs<GeoJsonSource>("destination-source-id")
         source?.setGeoJson(Feature.fromGeometry(destinationPoint))
         getRoute(originPoint, destinationPoint)
         return true
@@ -166,7 +166,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListene
                         } else {
                             navigationMapRoute = NavigationMapRoute(null, mapView!!, mapboxMap!!, R.style.NavigationMapRoute)
                         }
-                        navigationMapRoute!!.addRoute(currentRoute)
+                        navigationMapRoute?.addRoute(currentRoute)
                     }
 
                     override fun onFailure(call: Call<DirectionsResponse?>, t: Throwable) {
