@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MapsBoxApiKotlin</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiYmlqYWxzdXRhcml5YSIsImEiOiJjanN5aHQ5eHIwZGQ2NDRwYXV0Y2J4anhzIn0.PLYoaXIXiE5DDZGBBt1ImQ</string>
+</resources>
